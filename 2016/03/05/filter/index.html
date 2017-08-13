@@ -78,7 +78,7 @@
 <link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="ES6,数组,filter," />
 
 
 
@@ -94,17 +94,18 @@
 
 
 
-<meta name="description" content="ES6新特性 filter 方法 数组去重12345var arr = [1, 2, 1, 2, 4, 5, 3, 5, 6, 7, 6];var result = arr.filter(function(v, i) &amp;#123;            return i === arr.indexOf(v);        &amp;#125;)        console.log(result); /">
+<meta name="description" content="ES6新特性 filter 方法 数组去重12345var arr = [1, 2, 1, 2, 4, 5, 3, 5, 6, 7, 6];var result = arr.filter(function(v, i) &amp;#123;    return i === arr.indexOf(v);    &amp;#125;)console.log(result); //[1, 2, 4, 5, 3, 6,">
+<meta name="keywords" content="ES6,数组,filter">
 <meta property="og:type" content="article">
 <meta property="og:title" content="ES6新特性 filter 方法">
 <meta property="og:url" content="http://yoursite.com/2016/03/05/filter/index.html">
 <meta property="og:site_name" content="DLS个人博客">
-<meta property="og:description" content="ES6新特性 filter 方法 数组去重12345var arr = [1, 2, 1, 2, 4, 5, 3, 5, 6, 7, 6];var result = arr.filter(function(v, i) &amp;#123;            return i === arr.indexOf(v);        &amp;#125;)        console.log(result); /">
+<meta property="og:description" content="ES6新特性 filter 方法 数组去重12345var arr = [1, 2, 1, 2, 4, 5, 3, 5, 6, 7, 6];var result = arr.filter(function(v, i) &amp;#123;    return i === arr.indexOf(v);    &amp;#125;)console.log(result); //[1, 2, 4, 5, 3, 6,">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-08-12T17:15:46.158Z">
+<meta property="og:updated_time" content="2017-08-13T09:48:19.971Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ES6新特性 filter 方法">
-<meta name="twitter:description" content="ES6新特性 filter 方法 数组去重12345var arr = [1, 2, 1, 2, 4, 5, 3, 5, 6, 7, 6];var result = arr.filter(function(v, i) &amp;#123;            return i === arr.indexOf(v);        &amp;#125;)        console.log(result); /">
+<meta name="twitter:description" content="ES6新特性 filter 方法 数组去重12345var arr = [1, 2, 1, 2, 4, 5, 3, 5, 6, 7, 6];var result = arr.filter(function(v, i) &amp;#123;    return i === arr.indexOf(v);    &amp;#125;)console.log(result); //[1, 2, 4, 5, 3, 6,">
 
 
 
@@ -296,6 +297,28 @@
           </span>
 
           
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/JavaScript学习/" itemprop="url" rel="index">
+                    <span itemprop="name">JavaScript学习</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
 
           
             
@@ -324,7 +347,7 @@
 
       
         <h2 id="ES6新特性-filter-方法"><a href="#ES6新特性-filter-方法" class="headerlink" title="ES6新特性 filter 方法"></a>ES6新特性 filter 方法</h2><blockquote>
-<p>数组去重<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> arr = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">3</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="number">6</span>];</div><div class="line"><span class="keyword">var</span> result = arr.filter(<span class="function"><span class="keyword">function</span>(<span class="params">v, i</span>) </span>&#123;</div><div class="line">            <span class="keyword">return</span> i === arr.indexOf(v);</div><div class="line">        &#125;)</div><div class="line">        <span class="built_in">console</span>.log(result); <span class="comment">//[1, 2, 4, 5, 3, 6, 7]</span></div></pre></td></tr></table></figure></p>
+<p>数组去重<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> arr = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">3</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="number">6</span>];</div><div class="line"><span class="keyword">var</span> result = arr.filter(<span class="function"><span class="keyword">function</span>(<span class="params">v, i</span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> i === arr.indexOf(v);</div><div class="line">    &#125;)</div><div class="line"><span class="built_in">console</span>.log(result); <span class="comment">//[1, 2, 4, 5, 3, 6, 7]</span></div></pre></td></tr></table></figure></p>
 </blockquote>
 <ol>
 <li>filter()方法使用指定的函数测试所有元素，并创建一个包含所有通过测试的元素的新数组。</li>
@@ -355,6 +378,16 @@
     
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/ES6/" rel="tag"># ES6</a>
+          
+            <a href="/tags/数组/" rel="tag"># 数组</a>
+          
+            <a href="/tags/filter/" rel="tag"># filter</a>
+          
+        </div>
       
 
       
@@ -457,7 +490,25 @@
           
 
           
+            
+            
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">1</span>
+                <span class="site-state-item-name">分类</span>
+              
+            </div>
+          
 
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              
+                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-name">标签</span>
+              
+            </div>
           
 
         </nav>

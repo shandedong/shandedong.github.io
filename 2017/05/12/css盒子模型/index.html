@@ -1,0 +1,751 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="css," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="理解CSS盒子模型概述  网页设计中常听的属性名：内容(content)、填充(padding)、边框(border)、边界(margin)，CSS盒子模型都具备这些属性，也主要是这些属性。 这些属性我们可以把它转移到我们日常生活中的盒子(箱子)上来理解，日常生活中所见的盒子也就是能装东西的一种箱子，也具有这些属性，所以叫它盒子模型。 CSS盒子模型就是在网页设计中经常用到的CSS技术所使用的一">
+<meta name="keywords" content="css">
+<meta property="og:type" content="article">
+<meta property="og:title" content="理解盒子模型">
+<meta property="og:url" content="http://yoursite.com/2017/05/12/css盒子模型/index.html">
+<meta property="og:site_name" content="DLS个人博客">
+<meta property="og:description" content="理解CSS盒子模型概述  网页设计中常听的属性名：内容(content)、填充(padding)、边框(border)、边界(margin)，CSS盒子模型都具备这些属性，也主要是这些属性。 这些属性我们可以把它转移到我们日常生活中的盒子(箱子)上来理解，日常生活中所见的盒子也就是能装东西的一种箱子，也具有这些属性，所以叫它盒子模型。 CSS盒子模型就是在网页设计中经常用到的CSS技术所使用的一">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://ww1.sinaimg.cn/large/79462090jw1f1it8lp6ssj20kq0cnjs4.jpg?_=5237340">
+<meta property="og:image" content="http://ww3.sinaimg.cn/large/79462090jw1f1it9z7ugkj20lz0cu0tf.jpg?_=5237340">
+<meta property="og:updated_time" content="2017-09-11T10:45:10.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="理解盒子模型">
+<meta name="twitter:description" content="理解CSS盒子模型概述  网页设计中常听的属性名：内容(content)、填充(padding)、边框(border)、边界(margin)，CSS盒子模型都具备这些属性，也主要是这些属性。 这些属性我们可以把它转移到我们日常生活中的盒子(箱子)上来理解，日常生活中所见的盒子也就是能装东西的一种箱子，也具有这些属性，所以叫它盒子模型。 CSS盒子模型就是在网页设计中经常用到的CSS技术所使用的一">
+<meta name="twitter:image" content="http://ww1.sinaimg.cn/large/79462090jw1f1it8lp6ssj20kq0cnjs4.jpg?_=5237340">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/05/12/css盒子模型/"/>
+
+
+
+
+
+  <title>理解盒子模型 | DLS个人博客</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">DLS个人博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/05/12/css盒子模型/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="DLS">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="DLS个人博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">理解盒子模型</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-05-12T00:00:00+08:00">
+                2017-05-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/CSS学习/" itemprop="url" rel="index">
+                    <span itemprop="name">CSS学习</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<h2 id="理解CSS盒子模型"><a href="#理解CSS盒子模型" class="headerlink" title="理解CSS盒子模型"></a>理解CSS盒子模型</h2><h3 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h3></blockquote>
+<ul>
+<li>网页设计中常听的属性名：内容(content)、填充(padding)、边框(border)、边界(margin)，CSS盒子模型都具备这些属性，也主要是这些属性。</li>
+<li>这些属性我们可以把它转移到我们日常生活中的盒子(箱子)上来理解，日常生活中所见的盒子也就是能装东西的一种箱子，也具有这些属性，所以叫它盒子模型。</li>
+<li>CSS盒子模型就是在网页设计中经常用到的CSS技术所使用的一种思维模型。</li>
+<li>盒子模型是css中一个重要的概念，理解了盒子模型才能更好的排版。其实盒子模型有两种，分别是 ie 盒子模型和标准 w3c 盒子模型。他们对盒子模型的解释各不相同。</li>
+</ul>
+<a id="more"></a>
+<blockquote>
+<h3 id="标准盒子模型"><a href="#标准盒子模型" class="headerlink" title="标准盒子模型"></a>标准盒子模型</h3></blockquote>
+<p><img src="http://ww1.sinaimg.cn/large/79462090jw1f1it8lp6ssj20kq0cnjs4.jpg?_=5237340" alt="标准盒子模型" title="标准盒子模型"></p>
+<p>从上图可以看到标准 w3c 盒子模型的范围包括 margin、border、padding、content，并且 content 部分不包含其他部分。</p>
+<blockquote>
+<h3 id="ie-盒子模型"><a href="#ie-盒子模型" class="headerlink" title="ie 盒子模型"></a>ie 盒子模型</h3></blockquote>
+<p><img src="http://ww3.sinaimg.cn/large/79462090jw1f1it9z7ugkj20lz0cu0tf.jpg?_=5237340" alt="ie 盒子模型" title="ie 盒子模型"></p>
+<p>从上图可以看到 ie 盒子模型的范围也包括 margin、border、padding、content，和标准 w3c 盒子模型不同的是：ie 盒子模型的 content 部分包含了 border 和 pading。</p>
+<p>例：一个盒子的 margin 为 20px，border 为 1px，padding 为 10px，content 的宽为 200px、高为 50px，假如用标准 w3c 盒子模型解释，那么这个盒子需要占据的位置为：宽 202+12+102+200=262px、高 202+12102+50=112px，盒子的实际大小为：宽 12+102+200=222px、高 12+102+50=72px；假如用ie 盒子模型，那么这个盒子需要占据的位置为：宽 202+200=240px、高 20*2+50=70px，盒子的实际大小为：宽 200px、高 50px。</p>
+<p>在 CSS 中，width 和 height 指的是内容区域的宽度和高度。增加内边距、边框和外边距不会影响内容区域的尺寸，但是会增加元素框的总尺寸。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="number">1.</span> 提示：背景应用于由内容和内边距、边框组成的区域。</div><div class="line"><span class="number">2.</span> 示：内边距、边框和外边距可以应用于一个元素的所有边，也可以应用于单独的边。</div><div class="line"><span class="number">3.</span> 提示：外边距可以是负值，而且在很多情况下都要使用负值的外边距。</div></pre></td></tr></table></figure>
+<blockquote>
+<h3 id="浏览器兼容性"><a href="#浏览器兼容性" class="headerlink" title="浏览器兼容性"></a>浏览器兼容性</h3></blockquote>
+<p>一旦为页面设置了恰当的 DTD，大多数浏览器都会按照上面的图示来呈现内容。然而 IE 5 和 6 的呈现却是不正确的。根据 W3C 的规范，元素内容占据的空间是由 width 属性设置的，而内容周围的 padding 和 border 值是另外计算的。不幸的是，IE5.X 和 6 在怪异模式中使用自己的非标准模型。这些浏览器的 width 属性不是内容的宽度，而是内容、内边距和边框的宽度的总和。<br>虽然有方法解决这个问题。但是目前最好的解决方案是回避这个问题。也就是，不要给元素添加具有指定宽度的内边距，而是尝试将内边距或外边距添加到元素的父元素和子元素。</p>
+<h4 id="那我们开发的时候选择哪中盒子模型呢？"><a href="#那我们开发的时候选择哪中盒子模型呢？" class="headerlink" title="那我们开发的时候选择哪中盒子模型呢？"></a>那我们开发的时候选择哪中盒子模型呢？</h4><p>肯定是“标准 w3c 盒子模型”。怎么样才算是选择了“标准 w3c 盒子模型”呢？很简单，就是在网页的顶部加上 doctype 声明。假如不加 doctype 声明，那么各个浏览器会根据自己的行为去理解网页，即 ie 浏览器会采用 ie 盒子模型去解释你的盒子，而 ff 会采用标准 w3c 盒子模型解释你的盒子，所以网页在不同的浏览器中就显示的不一样了。反之，假如加上了 doctype 声明，那么所有浏览器都会采用标准 w3c 盒子模型去解释你的盒子，网页就能在各个浏览器中显示一致了。</p>
+<p><code>所以为了让网页能兼容各个浏览器，让我们用标准 w3c 盒子模型。</code></p>
+<blockquote>
+<h3 id="CSS3-box-sizing-属性"><a href="#CSS3-box-sizing-属性" class="headerlink" title="CSS3 box-sizing 属性"></a>CSS3 box-sizing 属性</h3></blockquote>
+<h4 id="定义和用法"><a href="#定义和用法" class="headerlink" title="定义和用法"></a>定义和用法</h4><p><code>box-sizing</code> 属性允许您以特定的方式定义匹配某个区域的特定元素。<br><code>box-sizing</code>有两个值一个是<code>content-box</code>，另一个是<code>border-box</code>。<br>当设置为<code>box-sizing:content-box</code>时，将采用<code>*标准模式*</code>解析计算，也是默认模式；<br>当设置为<code>box-sizing:border-box</code>时，将采用<code>*怪异模式*</code>解析计算；<br>目前使用此属性需要前缀如下:</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">-webkit-box-sizing</span>: <span class="selector-tag">content-box</span>;</div><div class="line"><span class="selector-tag">-moz-box-sizing</span>: <span class="selector-tag">content-box</span>;</div><div class="line">box-sizing: content-box|border-box|inherit;</div></pre></td></tr></table></figure>
+<p>例如，假如您需要并排放置两个带边框的框，可通过将 box-sizing 设置为 “border-box”。这可令浏览器以怪异模式呈现出带有指定宽度和高度的框，并把边框和内边距放入框中。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/css/" rel="tag"># css</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/05/11/v-router的学习/" rel="next" title="Vue-router从入门到入门">
+                <i class="fa fa-chevron-left"></i> Vue-router从入门到入门
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/09/21/数组去重/" rel="prev" title="js数组去重">
+                js数组去重 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="DLS" />
+          <p class="site-author-name" itemprop="name">DLS</p>
+           
+              <p class="site-description motion-element" itemprop="description">一个有思想的程序员</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">29</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-name">分类</span>
+              
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              
+                <span class="site-state-item-count">48</span>
+                <span class="site-state-item-name">标签</span>
+              
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#理解CSS盒子模型"><span class="nav-number">1.</span> <span class="nav-text">理解CSS盒子模型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#概述"><span class="nav-number">1.1.</span> <span class="nav-text">概述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#标准盒子模型"><span class="nav-number">1.2.</span> <span class="nav-text">标准盒子模型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ie-盒子模型"><span class="nav-number">1.3.</span> <span class="nav-text">ie 盒子模型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#浏览器兼容性"><span class="nav-number">1.4.</span> <span class="nav-text">浏览器兼容性</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#那我们开发的时候选择哪中盒子模型呢？"><span class="nav-number">1.4.1.</span> <span class="nav-text">那我们开发的时候选择哪中盒子模型呢？</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CSS3-box-sizing-属性"><span class="nav-number">1.5.</span> <span class="nav-text">CSS3 box-sizing 属性</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#定义和用法"><span class="nav-number">1.5.1.</span> <span class="nav-text">定义和用法</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2015 - 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">DLS</span>
+</div>
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+  
+  <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+
+  
+  <script type="text/javascript" src="/lib/three/three.min.js"></script>
+
+  
+  <script type="text/javascript" src="/lib/three/three-waves.min.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.2"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

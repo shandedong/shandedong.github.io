@@ -1,0 +1,764 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="错误1 在使用hexo部署博客到gitcafe的时候，出现了如下错误: 12345678910INFO  Deploying: gitINFO  Clearing .deploy_git folder...INFO  Copying files from public folder...fatal: Not a git repository (or any of the parent direc">
+<meta name="keywords" content="Hexo">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hexo部署博客的err">
+<meta property="og:url" content="http://yoursite.com/2015/09/12/hexo 报错/index.html">
+<meta property="og:site_name" content="DLS个人博客">
+<meta property="og:description" content="错误1 在使用hexo部署博客到gitcafe的时候，出现了如下错误: 12345678910INFO  Deploying: gitINFO  Clearing .deploy_git folder...INFO  Copying files from public folder...fatal: Not a git repository (or any of the parent direc">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2017-09-21T05:12:04.097Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Hexo部署博客的err">
+<meta name="twitter:description" content="错误1 在使用hexo部署博客到gitcafe的时候，出现了如下错误: 12345678910INFO  Deploying: gitINFO  Clearing .deploy_git folder...INFO  Copying files from public folder...fatal: Not a git repository (or any of the parent direc">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2015/09/12/hexo 报错/"/>
+
+
+
+
+
+  <title>Hexo部署博客的err | DLS个人博客</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">DLS个人博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2015/09/12/hexo 报错/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="DLS">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="DLS个人博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Hexo部署博客的err</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-09-12T00:00:00+08:00">
+                2015-09-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Hexo/" itemprop="url" rel="index">
+                    <span itemprop="name">Hexo</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<h2 id="错误1"><a href="#错误1" class="headerlink" title="错误1"></a>错误1</h2></blockquote>
+<p>在使用hexo部署博客到gitcafe的时候，出现了如下错误:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">INFO  Deploying: git</div><div class="line">INFO  Clearing .deploy_git folder...</div><div class="line">INFO  Copying files <span class="keyword">from</span> public folder...</div><div class="line">fatal: Not a git repository (or any <span class="keyword">of</span> the parent directories): .git</div><div class="line">FATAL Something<span class="string">'s wrong. Maybe you can find the solution here: http://hexo.io/docs/troubleshooting.html</span></div><div class="line"><span class="string">Error: fatal: Not a git repository (or any of the parent directories): .git</span></div><div class="line"><span class="string"></span></div><div class="line"><span class="string">    at ChildProcess.&lt;anonymous&gt; (E:\blog\HexoBlog\node_modules\hexo-util\lib\spawn.js:37:17)</span></div><div class="line"><span class="string">    at emitTwo (events.js:87:13)</span></div><div class="line"><span class="string">    ……</span></div></pre></td></tr></table></figure>
+<a id="more"></a>
+<p><code>解决方法</code></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">删除.deploy文件夹，重新生成即可解决该问题</div><div class="line">哈哈哈，抖机灵。成功。</div></pre></td></tr></table></figure>
+<blockquote>
+<h2 id="权限错误"><a href="#权限错误" class="headerlink" title="权限错误"></a>权限错误</h2></blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">Permission denied (publickey).</div><div class="line">fatal: Could not read <span class="keyword">from</span> remote repository.</div><div class="line"></div><div class="line">Please make sure you have the correct access rights</div><div class="line">and the repository exists.</div><div class="line">FATAL Something<span class="string">'s wrong. Maybe you can find the solution here: http://hexo.io/docs/troubleshooting.html</span></div><div class="line"><span class="string">Error: Warning: Permanently added '</span>github.com,<span class="number">192.30</span><span class="number">.253</span><span class="number">.112</span><span class="string">' (RSA) to the list of known hosts.</span></div><div class="line"><span class="string">Permission denied (publickey).</span></div><div class="line"><span class="string">fatal: Could not read from remote repository.</span></div><div class="line"><span class="string"></span></div><div class="line"><span class="string">Please make sure you have the correct access rights</span></div></pre></td></tr></table></figure>
+<p>有网友们有建议将deploy处设置不要使用https，而是改为SSH，如下：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">repository: https:<span class="comment">//github.com/username/username.github.io.git</span></div></pre></td></tr></table></figure>
+<p>修改为:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">repo：git@github.com:username/username.github.io.git</div></pre></td></tr></table></figure>
+<p>各种姿势修改都不对，究竟怎样使我们的博客可以重新部署到github上</p>
+<blockquote>
+<h2 id="当部署失败的时候，请按照以下步骤进行："><a href="#当部署失败的时候，请按照以下步骤进行：" class="headerlink" title="当部署失败的时候，请按照以下步骤进行："></a><strong>当部署失败的时候，请按照以下步骤进行：</strong></h2><h3 id="1-检查是否有SSH-key"><a href="#1-检查是否有SSH-key" class="headerlink" title="1.检查是否有SSH key"></a>1.检查是否有SSH key</h3></blockquote>
+<p>登陆github，点击头像位置处 Settings ——&gt; SSH and GPG keys ，查看是否有SSH keys。如果有，直接跳到第（3）步；如果没有，则继续。</p>
+<blockquote>
+<h3 id="2-新建-SSH-key，在git-shell-或者git-bash等命令窗口-，注意大小写："><a href="#2-新建-SSH-key，在git-shell-或者git-bash等命令窗口-，注意大小写：" class="headerlink" title="2.新建 SSH key，在git shell(或者git bash等命令窗口)，注意大小写："></a>2.新建 SSH key，在git shell(或者git bash等命令窗口)，注意大小写：</h3></blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ ssh-keygen -t rsa -C <span class="string">"邮箱名"</span></div></pre></td></tr></table></figure>
+<p>然后出现:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Generating public/private rsa key pair.</div><div class="line">Enter file <span class="keyword">in</span> which to save the key (<span class="regexp">/c/</span>Users/dell/.ssh/id_rsa):</div></pre></td></tr></table></figure>
+<p>直接回车就可以。<br>然后会出现：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Enter passphrase (empty <span class="keyword">for</span> no passphrase):</div><div class="line">Enter same passphrase again:</div></pre></td></tr></table></figure>
+<p>要求你输入密码，这个密码会在你提交项目时使用，如果为空的话提交项目时则不用输入。这个设置是防止别人往你的项目里提交内容。</p>
+<p>注意：输入密码的时候没有*字样的，直接输入就好。<br>然后会出现：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">Your identification has been saved <span class="keyword">in</span> /c/Users/dell/.ssh/id_rsa.</div><div class="line">Your public key has been saved <span class="keyword">in</span> /c/Users/dell/.ssh/id_rsa.pub.</div><div class="line">The key fingerprint is:</div><div class="line"><span class="number">65</span>:<span class="number">69</span>:······<span class="number">02</span>:<span class="number">4</span>b emailname@email.com</div><div class="line">The key<span class="string">'s randomart image is:</span></div><div class="line"><span class="string">+--[ RSA 2048]----+</span></div><div class="line"><span class="string">|                 |</span></div><div class="line"><span class="string">|       .   o .   |</span></div><div class="line"><span class="string">|    . o o = o    |</span></div><div class="line"><span class="string">|   . o * = o     |</span></div><div class="line"><span class="string">|  E  o + o .     |</span></div><div class="line"><span class="string">| . o.   . .      |</span></div><div class="line"><span class="string">|     ..          |</span></div><div class="line"><span class="string">+-----------------+</span></div></pre></td></tr></table></figure>
+<p>至此，<code>密钥已经成功</code>生成</p>
+<blockquote>
+<h3 id="接下来在github上添加SSH-key："><a href="#接下来在github上添加SSH-key：" class="headerlink" title="接下来在github上添加SSH key："></a>接下来在github上添加SSH key：</h3></blockquote>
+<p>① 打开本地文件：id_rsa.pub（文件路径可以在上一步SSH生成成功后看到路径，比如我的是c/Users/dell/.ssh/id_rsa.pub），可以将这个文件在编辑器中打开，然后全选复制。</p>
+<p>② 登陆github，点击头像位置处 Settings ——&gt; SSH and GPG keys ——&gt; New SSH key，点击新建SSH key。</p>
+<p>③ 将 ① 中复制的内容粘贴在key文本框里，title可以不用填（或者自己起一个名字也可以）。</p>
+<blockquote>
+<h3 id="4-测试设置是否成功："><a href="#4-测试设置是否成功：" class="headerlink" title="4.测试设置是否成功："></a>4.测试设置是否成功：</h3></blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ ssh -T git@github.com</div></pre></td></tr></table></figure>
+<p>出现：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Hi username! You<span class="string">'ve successfully authenticated, but GitHub does not </span></div><div class="line"><span class="string">provide shell access.</span></div></pre></td></tr></table></figure>
+<blockquote>
+<h3 id="5-设置用户信息："><a href="#5-设置用户信息：" class="headerlink" title="5.设置用户信息："></a>5.设置用户信息：</h3></blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ git config --global user.name <span class="string">"用户名"</span></div><div class="line">$ git config --global user.email  <span class="string">"你希望的邮箱名"</span></div></pre></td></tr></table></figure>
+<blockquote>
+<h3 id="6-然后就可以部署你的博客到github了"><a href="#6-然后就可以部署你的博客到github了" class="headerlink" title="6.然后就可以部署你的博客到github了"></a>6.然后就可以部署你的博客到github了</h3></blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ hexo g</div><div class="line">$ hexo d</div></pre></td></tr></table></figure>
+<p><code>结束...</code></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Hexo/" rel="tag"># Hexo</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2015/08/20/AJAX和模板引擎/" rel="next" title="AJAX和模板引擎">
+                <i class="fa fa-chevron-left"></i> AJAX和模板引擎
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2015/09/12/函数的四种调用模式/" rel="prev" title="函数的四种调用模式">
+                函数的四种调用模式 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="DLS" />
+          <p class="site-author-name" itemprop="name">DLS</p>
+           
+              <p class="site-description motion-element" itemprop="description">一个有思想的程序员</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">29</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-name">分类</span>
+              
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              
+                <span class="site-state-item-count">48</span>
+                <span class="site-state-item-name">标签</span>
+              
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#错误1"><span class="nav-number">1.</span> <span class="nav-text">错误1</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#权限错误"><span class="nav-number">2.</span> <span class="nav-text">权限错误</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#当部署失败的时候，请按照以下步骤进行："><span class="nav-number">3.</span> <span class="nav-text">当部署失败的时候，请按照以下步骤进行：</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-检查是否有SSH-key"><span class="nav-number">3.1.</span> <span class="nav-text">1.检查是否有SSH key</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-新建-SSH-key，在git-shell-或者git-bash等命令窗口-，注意大小写："><span class="nav-number">3.2.</span> <span class="nav-text">2.新建 SSH key，在git shell(或者git bash等命令窗口)，注意大小写：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#接下来在github上添加SSH-key："><span class="nav-number">3.3.</span> <span class="nav-text">接下来在github上添加SSH key：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-测试设置是否成功："><span class="nav-number">3.4.</span> <span class="nav-text">4.测试设置是否成功：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-设置用户信息："><span class="nav-number">3.5.</span> <span class="nav-text">5.设置用户信息：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-然后就可以部署你的博客到github了"><span class="nav-number">3.6.</span> <span class="nav-text">6.然后就可以部署你的博客到github了</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2015 - 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">DLS</span>
+</div>
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+  
+  <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+
+  
+  <script type="text/javascript" src="/lib/three/three.min.js"></script>
+
+  
+  <script type="text/javascript" src="/lib/three/three-waves.min.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.2"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

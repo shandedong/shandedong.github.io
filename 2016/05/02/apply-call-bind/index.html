@@ -1,0 +1,844 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="apply,bind,call," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="接触JavaScript 的函数 apply 和 call 时，理解的非常模糊，网上资料枚不胜举，但大多晦涩难懂，整理了一下不理解的地方。  在JavaScript中，call、apply和bind是Function对象自带的三个方法，这三个方法的主要作用是改变函数中的this指向。 call、apply、bind方法的共同点和区别 apply 、 call 、bind 三者都是用来改变函数的th">
+<meta name="keywords" content="apply,bind,call">
+<meta property="og:type" content="article">
+<meta property="og:title" content="快速理解JavaScript中apply()和call()的用法和用途">
+<meta property="og:url" content="http://yoursite.com/2016/05/02/apply-call-bind/index.html">
+<meta property="og:site_name" content="DLS个人博客">
+<meta property="og:description" content="接触JavaScript 的函数 apply 和 call 时，理解的非常模糊，网上资料枚不胜举，但大多晦涩难懂，整理了一下不理解的地方。  在JavaScript中，call、apply和bind是Function对象自带的三个方法，这三个方法的主要作用是改变函数中的this指向。 call、apply、bind方法的共同点和区别 apply 、 call 、bind 三者都是用来改变函数的th">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2017-08-09T12:53:21.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="快速理解JavaScript中apply()和call()的用法和用途">
+<meta name="twitter:description" content="接触JavaScript 的函数 apply 和 call 时，理解的非常模糊，网上资料枚不胜举，但大多晦涩难懂，整理了一下不理解的地方。  在JavaScript中，call、apply和bind是Function对象自带的三个方法，这三个方法的主要作用是改变函数中的this指向。 call、apply、bind方法的共同点和区别 apply 、 call 、bind 三者都是用来改变函数的th">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2016/05/02/apply-call-bind/"/>
+
+
+
+
+
+  <title>快速理解JavaScript中apply()和call()的用法和用途 | DLS个人博客</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">DLS个人博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/05/02/apply-call-bind/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="DLS">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="DLS个人博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">快速理解JavaScript中apply()和call()的用法和用途</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-05-02T00:00:00+08:00">
+                2016-05-02
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/JavaScript学习/" itemprop="url" rel="index">
+                    <span itemprop="name">JavaScript学习</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>接触JavaScript 的函数 apply 和 call 时，理解的非常模糊，网上资料枚不胜举，但大多晦涩难懂，整理了一下不理解的地方。</p>
+<hr>
+<p>在JavaScript中，call、apply和bind是Function对象自带的三个方法，这三个方法的主要作用是改变函数中的this指向。</p>
+<h2 id="call、apply、bind方法的共同点和区别"><a href="#call、apply、bind方法的共同点和区别" class="headerlink" title="call、apply、bind方法的共同点和区别"></a>call、apply、bind方法的共同点和区别</h2><ul>
+<li>apply 、 call 、bind 三者都是用来改变函数的this对象的指向的；</li>
+<li>apply 、 call 、bind 三者第一个参数都是this要指向的对象，也就是想指定的上下文（函数的每次调用都会拥有一个特殊值——本次调用的上下文（context）——这就是this关键字的值。）；</li>
+<li>apply 、 call 、bind 三者都可以利用后续参数传参；</li>
+</ul>
+<p>bind 是返回对应函数，便于<strong>稍后调用</strong>；apply 、call 则是<strong>立即调用</strong> 。</p>
+<hr>
+<a id="more"></a>
+<h2 id="定义和语法"><a href="#定义和语法" class="headerlink" title="定义和语法"></a>定义和语法</h2><h3 id="call"><a href="#call" class="headerlink" title="call"></a>call</h3><ol>
+<li><strong>语法:</strong>  call([thisObj[,arg1[, arg2[, [,.argN]]]]])</li>
+<li><strong>定义:</strong>  劫持另外一个对象的方法，继承另外一个对象的属性.<pre><code>(调用一个对象的一个方法，以另一个对象替换当前对象。)
+</code></pre></li>
+<li><p><strong>说明:</strong></p>
+<ol>
+<li>call 方法可以用来代替另一个对象调用一个方法</li>
+<li>call 方法可将一个函数的对象上下文从初始的上下文改变为由 thisObj 指定的新对象.</li>
+</ol>
+</li>
+<li><p><strong>取值:</strong></p>
+<ol>
+<li>不传，或者传null,undefined， 函数中的this指向window对象</li>
+<li>传递另一个函数的函数名，函数中的this指向这个函数的引用</li>
+<li>传递字符串、数值或布尔类型等基础类型，函数中的this指向其对应的包装对象，如 String、Number、Boolean</li>
+<li>传递一个对象，函数中的this指向这个对象</li>
+</ol>
+</li>
+<li><p><strong>举例:</strong></p>
+</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">a</span>(<span class="params"></span>)</span>&#123;   </div><div class="line">  <span class="built_in">console</span>.log(<span class="keyword">this</span>);   <span class="comment">//输出函数a中的this对象</span></div><div class="line">&#125;       </div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">b</span>(<span class="params"></span>)</span>&#123;&#125;       </div><div class="line"></div><div class="line"><span class="keyword">var</span> c=&#123;<span class="attr">name</span>:<span class="string">"call"</span>&#125;;    <span class="comment">//定义对象c  </span></div><div class="line"></div><div class="line">a.call();   <span class="comment">//window</span></div><div class="line">a.call(<span class="literal">null</span>);   <span class="comment">//window</span></div><div class="line">a.call(<span class="literal">undefined</span>);   <span class="comment">//window</span></div><div class="line">a.call(<span class="number">1</span>);   <span class="comment">//Number</span></div><div class="line">a.call(<span class="string">''</span>);   <span class="comment">//String</span></div><div class="line">a.call(<span class="literal">true</span>);   <span class="comment">//Boolean</span></div><div class="line">a.call(b);   <span class="comment">//function b()&#123;&#125;</span></div><div class="line">a.call(c);   <span class="comment">//Object</span></div></pre></td></tr></table></figure>
+<p>对上面的例子觉得还是晦涩，让我们在来看一个例子:<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// ==&gt;例1</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">class1</span>(<span class="params"></span>)</span>&#123;   </div><div class="line">  <span class="keyword">this</span>.name=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;   </div><div class="line">    <span class="built_in">console</span>.log(<span class="string">"我是class1内的方法"</span>);   </div><div class="line">  &#125;   </div><div class="line">&#125;   </div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">class2</span>(<span class="params"></span>)</span>&#123; </div><div class="line">  class1.call(<span class="keyword">this</span>);  <span class="comment">//此行代码执行后，当前的this指向了class1（也可以说class2继承了class1）   </span></div><div class="line">&#125;   </div><div class="line"></div><div class="line"><span class="keyword">var</span> f=<span class="keyword">new</span> class2();   </div><div class="line">f.name();   <span class="comment">//调用的是class1内的方法，将class1的name方法交给class2使用</span></div></pre></td></tr></table></figure></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//常用例子 1</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">eat</span>(<span class="params">x,y</span>)</span>&#123;   </div><div class="line">  <span class="built_in">console</span>.log(x+y);   </div><div class="line">&#125;   </div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">drink</span>(<span class="params">x,y</span>)</span>&#123;   </div><div class="line">  <span class="built_in">console</span>.log(x-y);   </div><div class="line">&#125;   </div><div class="line">eat.call(drink,<span class="number">3</span>,<span class="number">2</span>);</div><div class="line"></div><div class="line"><span class="comment">//输出：5</span></div><div class="line"><span class="comment">//这个例子中的意思就是用 eat 来替换 drink，eat.call(drink,3,2) == eat(3,2) ，所以运行结果为：console.log(5);</span></div><div class="line"><span class="comment">//注意：js 中的函数其实是对象，函数名是对 Function 对象的引用。</span></div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//常用例子2</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Animal</span>(<span class="params"></span>)</span>&#123;   </div><div class="line">  <span class="keyword">this</span>.name=<span class="string">"animal"</span>;   </div><div class="line">  <span class="keyword">this</span>.showName=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;   </div><div class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>.name);   </div><div class="line">  &#125;   </div><div class="line">&#125;   </div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Dog</span>(<span class="params"></span>)</span>&#123;   </div><div class="line">  <span class="keyword">this</span>.name=<span class="string">"dog"</span>;   </div><div class="line">&#125;   </div><div class="line"><span class="keyword">var</span> animal=<span class="keyword">new</span> Animal();   </div><div class="line"><span class="keyword">var</span> dog=<span class="keyword">new</span> Dog();       </div><div class="line"></div><div class="line">animal.showName.call(dog);</div><div class="line"></div><div class="line"><span class="comment">//输出：dog</span></div><div class="line"><span class="comment">//在上面的代码中，我们可以看到Dog里并没有showName方法，那为什么（this.name）的值是dog呢？</span></div><div class="line"></div><div class="line"><span class="comment">//关键就在于最后一段代码（animal.showName.call(dog)），意思是把animal的方法放到dog上执行，也可以说，把animal 的showName()方法放到 dog上来执行，所以this.name 应该是 dog。</span></div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//常用例子3 (继承)</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Animal</span>(<span class="params">name</span>)</span>&#123;   </div><div class="line">  <span class="keyword">this</span>.name=name;   </div><div class="line">  <span class="keyword">this</span>.showName=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;   </div><div class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>.name);   </div><div class="line">  &#125;   </div><div class="line">&#125;   </div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Dog</span>(<span class="params">name</span>)</span>&#123;   </div><div class="line">  Animal.call(<span class="keyword">this</span>,name);   </div><div class="line">&#125;   </div><div class="line"><span class="keyword">var</span> dog=<span class="keyword">new</span> Dog(<span class="string">"Crazy dog"</span>);   </div><div class="line">dog.showName();</div><div class="line"></div><div class="line"><span class="comment">//输出：Crazy dog</span></div><div class="line"><span class="comment">//Animal.call(this) 的意思就是使用 Animal对象代替this对象，那么Dog就能直接调用Animal的所有属性和方法。</span></div></pre></td></tr></table></figure>
+<h3 id="apply"><a href="#apply" class="headerlink" title="apply"></a>apply</h3><ol>
+<li><strong>语法:</strong>  apply([thisObj[,argArray]])</li>
+<li><strong>定义:</strong>  应用某一对象的一个方法，用另一个对象替换当前对象。</li>
+<li><strong>说明:</strong>  <ul>
+<li>如果 argArray 不是一个有效的数组或者不是 arguments 对象，那么将导致一个 TypeError。</li>
+<li>如果没有提供 argArray 和 thisObj 任何一个参数，那么 Global 对象将被用作 thisObj， 并且无法被传递任何参数。</li>
+</ul>
+</li>
+<li><strong>call 和 apply 的区别</strong><br>对于 apply、call 二者而言，作用完全一样，只是接受参数的方式不太一样。<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">class1</span>(<span class="params">args1,args2</span>)</span>&#123;       </div><div class="line">  <span class="keyword">this</span>.name=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;      </div><div class="line">   <span class="built_in">console</span>.log(args,args);      </div><div class="line">  &#125;     </div><div class="line">&#125;     </div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">class2</span>(<span class="params"></span>)</span>&#123;    </div><div class="line">  <span class="keyword">var</span> args1=<span class="string">"1"</span>;</div><div class="line">  <span class="keyword">var</span> args2=<span class="string">"2"</span>;</div><div class="line">  class1.call(<span class="keyword">this</span>,args1,args2);  </div><div class="line">  <span class="comment">/*或*/</span></div><div class="line">  class1.apply(<span class="keyword">this</span>,[args1,args2]);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">var</span> c=<span class="keyword">new</span> class2();   </div><div class="line">c.name();</div><div class="line"></div><div class="line">输出：<span class="number">1</span> <span class="number">2</span></div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p><strong>call 需要把参数按顺序传递进去，而 apply 则是把参数放在数组里。</strong></p>
+<blockquote>
+<p>既然两者功能一样，那该用哪个呢？</p>
+</blockquote>
+<p>在JavaScript 中，某个函数的参数数量是不固定的，因此要说适用条件的话，当你的参数是明确知道数量时用 call ；<br>而不确定的时候用 apply，然后把参数 push 进数组传递进去。当参数数量不确定时，函数内部也可以通过 arguments 这个数组来遍历所有的参数。</p>
+<h3 id="bind"><a href="#bind" class="headerlink" title="bind"></a>bind</h3><ol>
+<li>bind是在EcmaScript5中扩展的方法（IE6,7,8不支持）</li>
+<li><p>bind() 方法与 apply 和 call 很相似，也是可以改变函数体内 this 的指向。</p>
+</li>
+<li><p>MDN的解释是：bind()方法会创建一个新函数，称为绑定函数，当调用这个绑定函数时，绑定函数会以创建它时传入 bind()方法的第一个参数作为 this，传入 bind() 方法的第二个以及以后的参数加上绑定函数运行时本身的参数按照顺序作为原函数的参数来调用原函数。</p>
+</li>
+</ol>
+<p><strong>注意</strong>：bind方法的返回值是函数<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> bar=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;   </div><div class="line">  <span class="built_in">console</span>.log(<span class="keyword">this</span>.x);   </div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> foo=&#123; </div><div class="line">     x:<span class="number">3</span>   </div><div class="line">&#125;   </div><div class="line">bar();  </div><div class="line">bar.bind(foo)();</div><div class="line"> <span class="comment">/*或*/</span></div><div class="line"><span class="keyword">var</span> func=bar.bind(foo);   </div><div class="line">func();</div><div class="line"></div><div class="line"><span class="comment">//输出：</span></div><div class="line"><span class="comment">//undefined</span></div><div class="line"><span class="comment">//3</span></div></pre></td></tr></table></figure></p>
+<h2 id="深入理解-apply-call-bind"><a href="#深入理解-apply-call-bind" class="headerlink" title="深入理解 apply call bind"></a>深入理解 apply call bind</h2><p>希望通过这篇笔记，更加清晰的提升对三者的理解，并列出一些关于它们的妙用加深记忆.</p>
+<h3 id="apply、call"><a href="#apply、call" class="headerlink" title="apply、call"></a>apply、call</h3><p>在 javascript 中，call 和 apply 都是为了改变某个函数运行时的上下文（context）而存在的，换句话说，就是为了改变函数体内部 this 的指向。</p>
+<p>JavaScript 的一大特点是，函数存在「定义时上下文」和「运行时上下文」以及「上下文是可以改变的」这样的概念。<br>先看一个例子：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">fruits</span>(<span class="params"></span>) </span>&#123;&#125;</div><div class="line"> </div><div class="line">fruits.prototype = &#123;</div><div class="line">    color: <span class="string">"red"</span>,</div><div class="line">    say: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="built_in">console</span>.log(<span class="string">"My color is "</span> + <span class="keyword">this</span>.color);</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"> </div><div class="line"><span class="keyword">var</span> apple = <span class="keyword">new</span> fruits;</div><div class="line">apple.say();    <span class="comment">//My color is red</span></div><div class="line"> <span class="comment">//但是如果我们有一个对象banana= &#123;color : "yellow"&#125; ,</span></div><div class="line"> <span class="comment">//我们不想对它重新定义 say 方法，那么我们可以通过 call 或 apply 用 apple 的 say 方法：</span></div></pre></td></tr></table></figure></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">banana = &#123;</div><div class="line">    color: <span class="string">"yellow"</span></div><div class="line">&#125;</div><div class="line">apple.say.call(banana);     <span class="comment">//My color is yellow</span></div><div class="line">apple.say.apply(banana);    <span class="comment">//My color is yellow</span></div><div class="line"><span class="comment">//所以，可以看出 call 和 apply 是为了动态改变 this 而出现的，当一个 object 没有某个方法（本例子中banana没有say方法），</span></div><div class="line"><span class="comment">//但是其他的有（本例子中apple有say方法），我们可以借助call或apply用其它对象的方法来操作。</span></div></pre></td></tr></table></figure>
+<h3 id="apply、call-的区别"><a href="#apply、call-的区别" class="headerlink" title="apply、call 的区别"></a>apply、call 的区别</h3><p> 对于 apply、call 二者而言，作用完全一样，只是接受参数的方式不太一样。例如，有一个函数定义如下：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> func = <span class="function"><span class="keyword">function</span>(<span class="params">arg1, arg2</span>) </span>&#123;</div><div class="line">     </div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<p>就可以通过如下方式来调用：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">func.call(<span class="keyword">this</span>, arg1, arg2);</div><div class="line">func.apply(<span class="keyword">this</span>, [arg1, arg2])</div></pre></td></tr></table></figure></p>
+<p>其中 this 是你想指定的上下文，他可以是任何一个 JavaScript 对象(JavaScript 中一切皆对象)，call 需要<strong>把参数按顺序传递</strong>进去，而 apply 则是<strong>把参数放在数组</strong>里。　　</p>
+<p>JavaScript 中，某个函数的参数数量是不固定的，因此要说适用条件的话，当你的参数是明确知道数量时用 call 。<br>而不确定的时候用 apply，然后把参数 push 进数组传递进去。当参数数量不确定时，函数内部也可以通过 arguments 这个数组来遍历所有的参数。</p>
+<h3 id="为了巩固加深记忆，下面列举一些常用用法："><a href="#为了巩固加深记忆，下面列举一些常用用法：" class="headerlink" title="为了巩固加深记忆，下面列举一些常用用法："></a>为了巩固加深记忆，下面列举一些常用用法：</h3><blockquote>
+<p>1.数组之间追加</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> array1 = [<span class="number">12</span> , <span class="string">"foo"</span> , &#123;name <span class="string">"Joe"</span>&#125; , <span class="number">-2458</span>]; </div><div class="line"><span class="keyword">var</span> array2 = [<span class="string">"Doe"</span> , <span class="number">555</span> , <span class="number">100</span>]; </div><div class="line"><span class="built_in">Array</span>.prototype.push.apply(array1, array2); </div><div class="line"><span class="comment">/* array1 值为  [12 , "foo" , &#123;name "Joe"&#125; , -2458 , "Doe" , 555 , 100] */</span></div></pre></td></tr></table></figure>
+<blockquote>
+<p>获取数组中的最大值和最小值</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span>  numbers = [<span class="number">5</span>, <span class="number">458</span> , <span class="number">120</span> , <span class="number">-215</span> ]; </div><div class="line"><span class="keyword">var</span> maxInNumbers = <span class="built_in">Math</span>.max.apply(<span class="built_in">Math</span>, numbers),   <span class="comment">//458</span></div><div class="line">    maxInNumbers = <span class="built_in">Math</span>.max.call(<span class="built_in">Math</span>,<span class="number">5</span>, <span class="number">458</span> , <span class="number">120</span> , <span class="number">-215</span>); <span class="comment">//458</span></div></pre></td></tr></table></figure>
+<p>number 本身没有 max 方法，但是 Math 有，我们就可以借助 call 或者 apply 使用其方法。</p>
+<blockquote>
+<p>3、验证是否是数组（前提是toString()方法没有被重写过）</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">functionisArray(obj)&#123; </div><div class="line">    <span class="keyword">return</span> <span class="built_in">Object</span>.prototype.toString.call(obj) === <span class="string">'[object Array]'</span> ;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<blockquote>
+<p>4.类（伪）数组使用数组方法</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> domNodes = <span class="built_in">Array</span>.prototype.slice.call(<span class="built_in">document</span>.getElementsByTagName(<span class="string">"*"</span>));</div></pre></td></tr></table></figure>
+<p>Javascript中存在一种名为伪数组的对象结构。比较特别的是 arguments 对象，还有像调用 getElementsByTagName , document.childNodes 之类的，它们返回NodeList对象都属于伪数组。不能应用 Array下的 push , pop 等方法。</p>
+<p>但是我们能通过 Array.prototype.slice.call 转换为真正的数组的带有 length 属性的对象，这样 domNodes 就可以应用 Array 下的所有方法了。</p>
+<blockquote>
+<p>深入理解运用 apply 、call</p>
+</blockquote>
+<p>定义一个 log 方法，让它可以代理 console.log 方法，常见的解决方法是：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">log</span>(<span class="params">msg</span>)　</span>&#123;</div><div class="line">  <span class="built_in">console</span>.log(msg);</div><div class="line">&#125;</div><div class="line">log(<span class="number">1</span>);    <span class="comment">//1</span></div><div class="line">log(<span class="number">1</span>,<span class="number">2</span>);    <span class="comment">//1</span></div></pre></td></tr></table></figure>
+<p>上面方法可以解决最基本的需求，但是当传入参数的个数是不确定的时候，上面的方法就失效了，这个时候就可以考虑使用 apply 或者 call，注意这里<strong>传入多少个参数是不确定</strong>的，所以使用apply是最好的，方法如下：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">log</span>(<span class="params"></span>)</span>&#123;</div><div class="line">  <span class="built_in">console</span>.log.apply(<span class="built_in">console</span>, <span class="built_in">arguments</span>);</div><div class="line">&#125;;</div><div class="line">log(<span class="number">1</span>);    <span class="comment">//1</span></div><div class="line">log(<span class="number">1</span>,<span class="number">2</span>);    <span class="comment">//1 2</span></div></pre></td></tr></table></figure>
+<p>接下来的要求是给每一个 log 消息添加一个”(app)”的前辍，比如：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">log(<span class="string">"hello world"</span>);    <span class="comment">//(app)hello world</span></div></pre></td></tr></table></figure>
+<p>该怎么做比较优雅呢?这个时候需要想到arguments参数是个伪数组，通过 Array.prototype.slice.call 转化为标准数组，再使用数组方法unshift，像这样：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">log</span>(<span class="params"></span>)</span>&#123;</div><div class="line">  <span class="keyword">var</span> args = <span class="built_in">Array</span>.prototype.slice.call(<span class="built_in">arguments</span>);</div><div class="line">  args.unshift(<span class="string">'(app)'</span>);</div><div class="line"> </div><div class="line">  <span class="built_in">console</span>.log.apply(<span class="built_in">console</span>, args);</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
+<h3 id="bind-1"><a href="#bind-1" class="headerlink" title="bind"></a>bind</h3><p>说完了 apply 和 call ，再来说说bind。bind() 方法与 apply 和 call 很相似，也是可以改变函数体内 this 的指向。</p>
+<p>MDN的解释是：bind()方法会创建一个新函数，称为绑定函数，当调用这个绑定函数时，绑定函数会以创建它时传入 bind()方法的第一个参数作为 this，传入 bind() 方法的第二个以及以后的参数加上绑定函数运行时本身的参数按照顺序作为原函数的参数来调用原函数。</p>
+<p>直接来看看具体如何使用，在常见的单体模式中，通常我们会使用 _this , that , self 等保存 this ，这样我们可以在改变了上下文之后继续引用到它。 像这样：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> foo = &#123;</div><div class="line">    bar : <span class="number">1</span>,</div><div class="line">    eventBind: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">        <span class="keyword">var</span> _this = <span class="keyword">this</span>;</div><div class="line">        $(<span class="string">'.someClass'</span>).on(<span class="string">'click'</span>,<span class="function"><span class="keyword">function</span>(<span class="params">event</span>) </span>&#123;</div><div class="line">            <span class="comment">/* Act on the event */</span></div><div class="line">            <span class="built_in">console</span>.log(_this.bar);     <span class="comment">//1</span></div><div class="line">        &#125;);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>由于 Javascript 特有的机制，上下文环境在 eventBind:function(){ } 过渡到 $(‘.someClass’).on(‘click’,function(event) { }) 发生了改变，上述使用变量保存 this 这些方式都是有用的，也没有什么问题。当然使用 bind() 可以更加优雅的解决这个问题：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> foo = &#123;</div><div class="line">    bar : <span class="number">1</span>,</div><div class="line">    eventBind: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">        $(<span class="string">'.someClass'</span>).on(<span class="string">'click'</span>,<span class="function"><span class="keyword">function</span>(<span class="params">event</span>) </span>&#123;</div><div class="line">            <span class="comment">/* Act on the event */</span></div><div class="line">            <span class="built_in">console</span>.log(<span class="keyword">this</span>.bar);      <span class="comment">//1</span></div><div class="line">        &#125;.bind(<span class="keyword">this</span>));</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>在上述代码里，bind() 创建了一个函数，当这个click事件绑定在被调用的时候，它的 this 关键词会被设置成被传入的值（这里指调用bind()时传入的参数）。因此，这里我们传入想要的上下文 this(其实就是 foo )，到 bind() 函数中。然后，当回调函数被执行的时候， this 便指向 foo 对象。再来一个简单的栗子：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> bar = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line"><span class="built_in">console</span>.log(<span class="keyword">this</span>.x);</div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> foo = &#123;</div><div class="line">x:<span class="number">3</span></div><div class="line">&#125;</div><div class="line">bar(); <span class="comment">// undefined</span></div><div class="line"><span class="keyword">var</span> func = bar.bind(foo);</div><div class="line">func(); <span class="comment">// 3</span></div></pre></td></tr></table></figure>
+<p>这里我们创建了一个新的函数 func，当使用 bind() 创建一个绑定函数之后，它被执行的时候，它的 this 会被设置成 foo ， 而不是像我们调用 bar() 时的全局作用域。</p>
+<p>有个有趣的问题，如果连续 bind() 两次，亦或者是连续 bind() 三次那么输出的值是什么呢？像这样：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> bar = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>.x);</div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> foo = &#123;</div><div class="line">    x:<span class="number">3</span></div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> sed = &#123;</div><div class="line">    x:<span class="number">4</span></div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> func = bar.bind(foo).bind(sed);</div><div class="line">func(); <span class="comment">//?</span></div><div class="line"> </div><div class="line"><span class="keyword">var</span> fiv = &#123;</div><div class="line">    x:<span class="number">5</span></div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> func = bar.bind(foo).bind(sed).bind(fiv);</div><div class="line">func(); <span class="comment">//?</span></div></pre></td></tr></table></figure>
+<p>答案是，两次都仍将输出 3 ，而非期待中的 4 和 5 。原因是，在Javascript中，多次 bind() 是无效的。更深层次的原因， bind() 的实现，相当于使用函数在内部包了一个 call / apply ，第二次 bind() 相当于再包住第一次 bind() ,故第二次以后的 bind 是无法生效的。</p>
+<p>   apply、call、bind比较</p>
+<p>那么 apply、call、bind 三者相比较，之间又有什么异同呢？何时使用 apply、call，何时使用 bind 呢。简单的一个栗子：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> obj = &#123;</div><div class="line">    x: <span class="number">81</span>,</div><div class="line">&#125;;</div><div class="line"> </div><div class="line"><span class="keyword">var</span> foo = &#123;</div><div class="line">    getX: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.x;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"> </div><div class="line"><span class="built_in">console</span>.log(foo.getX.bind(obj)());  <span class="comment">//81</span></div><div class="line"><span class="built_in">console</span>.log(foo.getX.call(obj));    <span class="comment">//81</span></div><div class="line"><span class="built_in">console</span>.log(foo.getX.apply(obj));   <span class="comment">//81</span></div></pre></td></tr></table></figure>
+<p>三个输出的都是81，但是注意看使用 bind() 方法的，他后面多了对括号。</p>
+<p>也就是说，区别是，当你希望改变上下文环境之后并非立即执行，而是回调执行的时候，使用 bind() 方法。而 apply/call 则会立即执行函数。</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><ul>
+<li>apply 、 call 、bind 三者都是用来改变函数的this对象的指向的；</li>
+<li>apply 、 call 、bind 三者第一个参数都是this要指向的对象，也就是想指定的上下文；</li>
+<li>apply 、 call 、bind 三者都可以利用后续参数传参；</li>
+<li>bind 是返回对应函数，便于稍后调用；apply 、call 则是立即调用 。</li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/apply/" rel="tag"># apply</a>
+          
+            <a href="/tags/bind/" rel="tag"># bind</a>
+          
+            <a href="/tags/call/" rel="tag"># call</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/04/08/static-website/" rel="next" title="利用 github 搭建静态网站">
+                <i class="fa fa-chevron-left"></i> 利用 github 搭建静态网站
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/07/23/a/" rel="prev" title="a标签点击跳转页面后怎么给当前点击的a标签添加样式">
+                a标签点击跳转页面后怎么给当前点击的a标签添加样式 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="DLS" />
+          <p class="site-author-name" itemprop="name">DLS</p>
+           
+              <p class="site-description motion-element" itemprop="description">一个有思想的程序员</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">29</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-name">分类</span>
+              
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              
+                <span class="site-state-item-count">48</span>
+                <span class="site-state-item-name">标签</span>
+              
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#call、apply、bind方法的共同点和区别"><span class="nav-number">1.</span> <span class="nav-text">call、apply、bind方法的共同点和区别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#定义和语法"><span class="nav-number">2.</span> <span class="nav-text">定义和语法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#call"><span class="nav-number">2.1.</span> <span class="nav-text">call</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#apply"><span class="nav-number">2.2.</span> <span class="nav-text">apply</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#bind"><span class="nav-number">2.3.</span> <span class="nav-text">bind</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#深入理解-apply-call-bind"><span class="nav-number">3.</span> <span class="nav-text">深入理解 apply call bind</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#apply、call"><span class="nav-number">3.1.</span> <span class="nav-text">apply、call</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#apply、call-的区别"><span class="nav-number">3.2.</span> <span class="nav-text">apply、call 的区别</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#为了巩固加深记忆，下面列举一些常用用法："><span class="nav-number">3.3.</span> <span class="nav-text">为了巩固加深记忆，下面列举一些常用用法：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#bind-1"><span class="nav-number">3.4.</span> <span class="nav-text">bind</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">4.</span> <span class="nav-text">总结</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2015 - 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">DLS</span>
+</div>
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+  
+  <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+
+  
+  <script type="text/javascript" src="/lib/three/three.min.js"></script>
+
+  
+  <script type="text/javascript" src="/lib/three/three-waves.min.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.2"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

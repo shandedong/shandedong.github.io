@@ -1,0 +1,885 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="垂直居中,css," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="水平居中的方式  垂直居中的方式    水平居中 1.水平居中: 行内元素解决方案  只需要将行内元素包裹在一个属性为block的父级元素中，并把这个父级元素添加如下属性即可:1text-align:center; 试用元素:    文字、链接、其它inline或者inline-*类型的元素(如 inline-block,inline-table,inline-flex)实例:12345678">
+<meta name="keywords" content="垂直居中,css">
+<meta property="og:type" content="article">
+<meta property="og:title" content="用 css 元素实现元素垂直居中">
+<meta property="og:url" content="http://yoursite.com/2016/03/03/center/index.html">
+<meta property="og:site_name" content="DLS个人博客">
+<meta property="og:description" content="水平居中的方式  垂直居中的方式    水平居中 1.水平居中: 行内元素解决方案  只需要将行内元素包裹在一个属性为block的父级元素中，并把这个父级元素添加如下属性即可:1text-align:center; 试用元素:    文字、链接、其它inline或者inline-*类型的元素(如 inline-block,inline-table,inline-flex)实例:12345678">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2017-08-18T15:28:06.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="用 css 元素实现元素垂直居中">
+<meta name="twitter:description" content="水平居中的方式  垂直居中的方式    水平居中 1.水平居中: 行内元素解决方案  只需要将行内元素包裹在一个属性为block的父级元素中，并把这个父级元素添加如下属性即可:1text-align:center; 试用元素:    文字、链接、其它inline或者inline-*类型的元素(如 inline-block,inline-table,inline-flex)实例:12345678">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2016/03/03/center/"/>
+
+
+
+
+
+  <title>用 css 元素实现元素垂直居中 | DLS个人博客</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">DLS个人博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/03/03/center/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="DLS">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="DLS个人博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">用 css 元素实现元素垂直居中</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-03-03T00:00:00+08:00">
+                2016-03-03
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/CSS学习/" itemprop="url" rel="index">
+                    <span itemprop="name">CSS学习</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <hr>
+<ol>
+<li><p>水平居中的方式</p>
+</li>
+<li><p>垂直居中的方式</p>
+</li>
+</ol>
+<hr>
+<h2 id="水平居中"><a href="#水平居中" class="headerlink" title="水平居中"></a>水平居中</h2><blockquote>
+<p>1.水平居中: 行内元素解决方案</p>
+</blockquote>
+<p>只需要将行内元素包裹在一个属性为block的父级元素中，并把这个父级元素添加如下属性即可:<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">text-align:center;</div></pre></td></tr></table></figure></p>
+<p><code>试用元素:</code><br>    文字、链接、其它inline或者inline-*类型的元素(如 inline-block,inline-table,inline-flex)<br><code>实例:</code><br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/*CSS代码片段*/</span></div><div class="line">nav, div&#123;</div><div class="line">  text-align: center;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">/*Html代码片段*/</span></div><div class="line">&lt;div&gt;文字元素&lt;<span class="regexp">/div&gt;</span></div><div class="line"><span class="regexp"></span></div><div class="line"><span class="regexp">&lt;nav&gt;</span></div><div class="line"><span class="regexp">  &lt;a href=""&gt;链接元素01&lt;/</span>a&gt;</div><div class="line">  &lt;a href=<span class="string">""</span>&gt;链接元素<span class="number">02</span>&lt;<span class="regexp">/a&gt;</span></div><div class="line"><span class="regexp">  &lt;a href=""&gt;链接元素03&lt;/</span>a&gt;</div><div class="line">&lt;<span class="regexp">/nav&gt;</span></div></pre></td></tr></table></figure></p>
+<blockquote>
+<p>2.水平居中: 块级元素解决方案<br><a id="more"></a><br>对于块级元素( display:block )来说，我们需要将它的外边距(即 margin-left和margin-right )设置为auto，即可实现块级元素的居中。</p>
+</blockquote>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.center</span>&#123;</div><div class="line">  <span class="comment">/* 这里可以设置顶端外边距 */</span></div><div class="line">  <span class="attribute">margin</span>: <span class="number">10px</span> auto;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><code>实例:</code><br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="comment">/*CSS 代码片段*/</span></div><div class="line"><span class="comment">/*</span></div><div class="line"><span class="comment">解决方案：</span></div><div class="line"><span class="comment">添加margin-left，margin-right属性值为auto即可，如下：</span></div><div class="line"><span class="comment">margin: 0 auto;</span></div><div class="line"><span class="comment">注意：需要居中的块元素需要有固定的宽度，否则无法实现居中，因为占据100%宽度</span></div><div class="line"><span class="comment">*/</span></div><div class="line"><span class="selector-tag">div</span>,<span class="selector-tag">p</span> &#123;</div><div class="line">  <span class="attribute">width</span>: <span class="number">200px</span>; <span class="comment">/* 这里需要设置元素宽度 */</span></div><div class="line">  <span class="attribute">height</span>: <span class="number">150px</span>;</div><div class="line">  <span class="attribute">background</span>: <span class="number">#222</span>;</div><div class="line">  <span class="attribute">color</span>: <span class="number">#FFF</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">/* 定义居中关键属性 */</span></div><div class="line"><span class="selector-class">.center</span>&#123;</div><div class="line">  <span class="comment">/* 这里可以设置顶端外边距 */</span></div><div class="line">  <span class="attribute">margin</span>: <span class="number">10px</span> auto;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="comment">&lt;!--HTML 代码片段--&gt;</span></div><div class="line"></div><div class="line"><span class="comment">&lt;!--</span></div><div class="line"><span class="comment">居中元素：块状元素，如(div, p, section 等等元素），即display属性为block的元素</span></div><div class="line"><span class="comment">--&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"center"</span>&gt;</span></div><div class="line">    水平居中的块级元素</div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">p</span> <span class="attr">class</span>=<span class="string">"center"</span>&gt;</span> 水平居中的块级元素 <span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line"><span class="comment">&lt;!--现在可以看到居中效果的块状元素了 --&gt;</span></div></pre></td></tr></table></figure>
+<blockquote>
+<p>3.水平居中: 多个块状元素解决方案</p>
+</blockquote>
+<p>如果页面里有多个块状元素需要水平排列居中，可以将元素的display属性设置为inline-block，并且把父元素的text-align属性设置为center即可实现。</p>
+<p><code>实例:</code></p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/*</span></div><div class="line"><span class="comment"></span></div><div class="line"><span class="comment">解决方案：</span></div><div class="line"><span class="comment"></span></div><div class="line"><span class="comment">设置这几个块状的元素display属性为inline-block，并且设置父元素text-align属性为center即可</span></div><div class="line"><span class="comment"></span></div><div class="line"><span class="comment">*/</span></div><div class="line"></div><div class="line"><span class="selector-class">.center</span>&#123;</div><div class="line">  <span class="attribute">display</span>:inline-block;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="selector-tag">body</span>&#123;</div><div class="line">  <span class="attribute">text-align</span>:center;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">/* 元素美化 */</span></div><div class="line"><span class="selector-tag">div</span>&#123;</div><div class="line">  <span class="attribute">width</span>: <span class="number">100px</span>;</div><div class="line">  <span class="attribute">background</span>: <span class="number">#222</span>;</div><div class="line">  <span class="attribute">height</span>: <span class="number">50px</span>;</div><div class="line">  <span class="attribute">color</span>: <span class="number">#FFF</span>;</div><div class="line">  <span class="attribute">padding</span>: <span class="number">10px</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="comment">&lt;!--HTMl 代码片段--&gt;</span></div><div class="line"></div><div class="line"><span class="comment">&lt;!--</span></div><div class="line"><span class="comment">居中类型：水平居中</span></div><div class="line"><span class="comment">居中元素：“多个”块状元素水平横向排列居中</span></div><div class="line"><span class="comment">--&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"center"</span>&gt;</span>水平居中的块状元素<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"center"</span>&gt;</span>水平居中的块状元素<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"></div><div class="line"></div><div class="line"><span class="comment">&lt;!--</span></div><div class="line"><span class="comment"></span></div><div class="line"><span class="comment">现在可以看到以上两个块状元素水平横向排列并且居中</span></div><div class="line"><span class="comment"></span></div><div class="line"><span class="comment">提示：如果需要将以上两个元素垂直排列居中的话，使用上一节的margin: 0 auto;即可实现</span></div><div class="line"><span class="comment"></span></div><div class="line"><span class="comment">--&gt;</span></div></pre></td></tr></table></figure>
+<blockquote>
+<p>4.水平居中:多个块级元素解决方案(使用flexbox布局实现)</p>
+</blockquote>
+<p>使用<code>flexbox</code>布局，只需要把待处理的块状元素的父元素添加属性<code>display:flex</code>及<code>justify-content:center</code>即可</p>
+<p><code>实例:</code></p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/*css代码片段*/</span></div><div class="line"><span class="comment">/*</span></div><div class="line"><span class="comment"></span></div><div class="line"><span class="comment">解决方案：</span></div><div class="line"><span class="comment"></span></div><div class="line"><span class="comment">设置需要水平居中的块状元素的父元素display为flex ，并且justify-content属性为center即可</span></div><div class="line"><span class="comment"></span></div><div class="line"><span class="comment">*/</span></div><div class="line"></div><div class="line"></div><div class="line"><span class="selector-tag">body</span>&#123;</div><div class="line">  <span class="attribute">display</span>: flex;</div><div class="line">  <span class="attribute">justify-content</span>: center;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">/* 页面美化元素 */</span></div><div class="line"></div><div class="line"><span class="selector-tag">div</span>&#123;</div><div class="line">  <span class="attribute">width</span>: <span class="number">100px</span>;</div><div class="line">  <span class="attribute">background</span>: <span class="number">#222</span>;</div><div class="line">  <span class="attribute">height</span>: <span class="number">50px</span>;</div><div class="line">  <span class="attribute">color</span>: <span class="number">#FFF</span>;</div><div class="line">  <span class="attribute">padding</span>: <span class="number">10px</span>;</div><div class="line">  <span class="attribute">margin</span>: <span class="number">10px</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="comment">&lt;!--html 代码片段--&gt;</span></div><div class="line"><span class="comment">&lt;!--</span></div><div class="line"><span class="comment"></span></div><div class="line"><span class="comment">居中类型：水平居中</span></div><div class="line"><span class="comment">居中元素：“多个”块状元素水平横向排列居中 (使用flexbox布局实现)</span></div><div class="line"><span class="comment"></span></div><div class="line"><span class="comment">--&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;<span class="name">div</span>&gt;</span>水平居中的块状元素<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">div</span>&gt;</span>水平居中的块状元素<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
+<h2 id="垂直居中"><a href="#垂直居中" class="headerlink" title="垂直居中"></a>垂直居中</h2><blockquote>
+<p>1.垂直居中:单行的行内元素解决方案</p>
+</blockquote>
+<p>当一个行内元素，即inline,inline-*类型的元素需要居中的话，可以将它的line-height设置为父元素的高度，即可实现垂直居中的效果。</p>
+<p><code>实例:</code><br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/*</span></div><div class="line"><span class="comment"></span></div><div class="line"><span class="comment">解决方案：将inline元素的line-height设为一致即可</span></div><div class="line"><span class="comment"></span></div><div class="line"><span class="comment">*/</span></div><div class="line"></div><div class="line"><span class="selector-id">#container</span>&#123;</div><div class="line">  <span class="attribute">background</span>: <span class="number">#222</span>;</div><div class="line">  <span class="attribute">height</span>: <span class="number">200px</span>;</div><div class="line">  <span class="attribute">text-align</span>: center;</div><div class="line">&#125;</div><div class="line"></div><div class="line"></div><div class="line"><span class="comment">/*  以下代码中，将a元素line-height设置的和父元素一样高度即可实现垂直居中 */</span></div><div class="line"><span class="selector-tag">a</span>&#123;</div><div class="line">  <span class="attribute">line-height</span>:<span class="number">200px</span>;  </div><div class="line">  <span class="attribute">color</span>: <span class="number">#FFF</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="comment">&lt;!--</span></div><div class="line"><span class="comment"></span></div><div class="line"><span class="comment">居中类型：垂直居中</span></div><div class="line"><span class="comment">居中元素：单行的inline类型元素，文字或者链接等</span></div><div class="line"><span class="comment"></span></div><div class="line"><span class="comment">--&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"container"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#"</span>&gt;</span>hello, xiaolili<span class="tag">&lt;/<span class="name">a</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
+<blockquote>
+<p>2.垂直居中:多行的行内元素解决方案( Inline-Block )</p>
+</blockquote>
+<p>组合使用<code>display:table-cell</code>和<code>vertical-align:middle</code>属性和<code>和一个伪元素让内容块处于容器中央</code>来定义需要居中的元素的父容器元素生成效果.<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"Center-Container is-Inline"</span>&gt;</span>  </div><div class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"Center-Block"</span>&gt;</span>  </div><div class="line">    <span class="comment">&lt;!-- CONTENT --&gt;</span>  </div><div class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span>  </div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="comment">/*</span></div><div class="line"><span class="comment">添加了一些小技巧:</span></div><div class="line"><span class="comment">如果内容块宽度大于容器宽度，比如放了一个很长的文本，</span></div><div class="line"><span class="comment">但内容块宽度设置最大不能超过容器的100%减去0.25em，</span></div><div class="line"><span class="comment">否则使用伪元素:after内容块会被挤到容器顶部，</span></div><div class="line"><span class="comment">使用:before内容块会向下偏移100%。</span></div><div class="line"><span class="comment"></span></div><div class="line"><span class="comment">如果你的内容块需要占据尽可能多的水平空间，</span></div><div class="line"><span class="comment">可以使用max-width: 99%;（针对较大的容器）</span></div><div class="line"><span class="comment">或max-width: calc(100% -0.25em)（取决于支持的浏览器和容器宽度）。</span></div><div class="line"><span class="comment"></span></div><div class="line"><span class="comment">*/</span></div><div class="line"><span class="selector-class">.Center-Container</span><span class="selector-class">.is-Inline</span> &#123;   </div><div class="line">  <span class="attribute">text-align</span>: center;  </div><div class="line">  <span class="attribute">overflow</span>: auto;  </div><div class="line">&#125;  </div><div class="line">  </div><div class="line"><span class="selector-class">.Center-Container</span><span class="selector-class">.is-Inline</span><span class="selector-pseudo">:after</span>,  </div><div class="line"><span class="selector-class">.is-Inline</span> <span class="selector-class">.Center-Block</span> &#123;  </div><div class="line">  <span class="attribute">display</span>: inline-block;  </div><div class="line">  <span class="attribute">vertical-align</span>: middle;  </div><div class="line">&#125;  </div><div class="line">  </div><div class="line"><span class="selector-class">.Center-Container</span><span class="selector-class">.is-Inline</span><span class="selector-pseudo">:after</span> &#123;  </div><div class="line">  <span class="attribute">content</span>: <span class="string">''</span>;  </div><div class="line">  <span class="attribute">height</span>: <span class="number">100%</span>;  </div><div class="line">  <span class="attribute">margin-left</span>: -<span class="number">0.25em</span>; <span class="comment">/* To offset spacing. May vary by font */</span>  </div><div class="line">&#125;  </div><div class="line">  </div><div class="line"><span class="selector-class">.is-Inline</span> <span class="selector-class">.Center-Block</span> &#123;  </div><div class="line">  <span class="attribute">max-width</span>: <span class="number">99%</span>; <span class="comment">/* Prevents issues with long content causes the content block to be pushed to the top */</span>  </div><div class="line">  <span class="comment">/* max-width: calc(100% - 0.25em) /* Only for IE9+ */</span>   </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><code>优点：</code></p>
+<ol>
+<li>高度可变</li>
+<li>内容溢出会将父元素撑开。</li>
+<li>支持跨浏览器，也适应于IE7。</li>
+</ol>
+<p><code>缺点：</code></p>
+<ol>
+<li>需要一个容器</li>
+<li>水平居中依赖于margin-left: -0.25em;该尺寸对于不同的字体/字号需要调整。</li>
+<li>内容块宽度不能超过容器的100% - 0.25em。</li>
+</ol>
+<blockquote>
+<p>3.垂直居中:负外边距(Negative Margins)</p>
+</blockquote>
+<p>如果块元素尺寸已知，可以通过以下方式让内容块居中于容器显示：<br>外边距margin取负数，大小为width/height（不使用box-sizing: border-box时包括padding，）的一半，再加上top: 50%; left: 50%;。即：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.is-Negative</span> &#123;  </div><div class="line">        <span class="attribute">width</span>: <span class="number">300px</span>;  </div><div class="line">        <span class="attribute">height</span>: <span class="number">200px</span>;  </div><div class="line">        <span class="attribute">padding</span>: <span class="number">20px</span>;  </div><div class="line">        <span class="attribute">position</span>: absolute;  </div><div class="line">        <span class="attribute">top</span>: <span class="number">50%</span>; <span class="attribute">left</span>: <span class="number">50%</span>;  </div><div class="line">        <span class="attribute">margin-left</span>: -<span class="number">170px</span>; <span class="comment">/* (width + padding)/2 */</span>  </div><div class="line">        <span class="attribute">margin-top</span>: -<span class="number">120px</span>; <span class="comment">/* (height + padding)/2 */</span>  </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>测试表明，这是唯一在IE6-IE7上也表现良好的方法。</p>
+<p><code>优点</code>：</p>
+<ol>
+<li>良好的跨浏览器特性，兼容IE6-IE7。</li>
+<li>代码量少。</li>
+</ol>
+<p><code>缺点：</code></p>
+<ol>
+<li>不能自适应。不支持百分比尺寸和min-/max-属性设置。</li>
+<li>内容可能溢出容器。</li>
+<li>边距大小与padding,和是否定义box-sizing: border-box有关，计算需要根据不同情况。<blockquote>
+<p>4.垂直居中: 变形(Transforms)</p>
+</blockquote>
+</li>
+</ol>
+<p>内容块定义transform: translate(-50%,-50%)必须带上浏览器厂商的前缀，还要加上</p>
+<p>top: 50%; left: 50%;</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.is-Transformed</span> &#123;   </div><div class="line">  <span class="attribute">width</span>: <span class="number">50%</span>;  </div><div class="line">  <span class="attribute">margin</span>: auto;  </div><div class="line">  <span class="attribute">position</span>: absolute;  </div><div class="line">  <span class="attribute">top</span>: <span class="number">50%</span>; <span class="attribute">left</span>: <span class="number">50%</span>;  </div><div class="line">  <span class="attribute">-webkit-transform</span>: <span class="built_in">translate</span>(-50%,-50%);  </div><div class="line">      <span class="attribute">-ms-transform</span>: <span class="built_in">translate</span>(-50%,-50%);  </div><div class="line">          <span class="attribute">transform</span>: <span class="built_in">translate</span>(-50%,-50%);  </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><code>优点：</code></p>
+<ol>
+<li>内容可变高度</li>
+<li>代码量少</li>
+</ol>
+<p><code>缺点：</code></p>
+<ol>
+<li><p>IE8不支持</p>
+</li>
+<li><p>属性需要写浏览器厂商前缀</p>
+</li>
+<li><p>可能干扰其他transform效果</p>
+</li>
+<li><p>某些情形下会出现文本或元素边界渲染模糊的现象</p>
+</li>
+</ol>
+<blockquote>
+<p>5.垂直居中:表格单元格( Table-Cell )</p>
+</blockquote>
+<p>总的说来这可能是最好的居中实现方法，因为内容块高度会随着实际内容的高度变化，浏览器对此的兼容性也好。最大的缺点是需要大量额外的标记，需要三层元素让最内层的元素居中。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/*</span></div><div class="line"><span class="comment">内层元素使用 display:table-cell</span></div><div class="line"><span class="comment">外层元素使用 display:table</span></div><div class="line"><span class="comment">*/</span></div><div class="line"><span class="selector-class">.Center-Container</span><span class="selector-class">.is-Table</span> &#123; <span class="attribute">display</span>: table; &#125;  </div><div class="line"><span class="selector-class">.is-Table</span> <span class="selector-class">.Table-Cell</span> &#123;  </div><div class="line">  <span class="attribute">display</span>: table-cell;  </div><div class="line">  <span class="attribute">vertical-align</span>: middle;  </div><div class="line">&#125;  </div><div class="line"><span class="selector-class">.is-Table</span> <span class="selector-class">.Center-Block</span> &#123;  </div><div class="line">  <span class="attribute">width</span>: <span class="number">50%</span>;  </div><div class="line">  <span class="attribute">margin</span>: <span class="number">0</span> auto;  </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"Center-Container is-Table"</span>&gt;</span>  </div><div class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"Table-Cell"</span>&gt;</span>  </div><div class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"Center-Block"</span>&gt;</span>  </div><div class="line">    <span class="comment">&lt;!-- CONTENT --&gt;</span>  </div><div class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span>  </div><div class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span>  </div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
+<p><code>优点：</code></p>
+<ol>
+<li><p>高度可变</p>
+</li>
+<li><p>内容溢出会将父元素撑开。</p>
+</li>
+<li><p>跨浏览器兼容性好。</p>
+</li>
+</ol>
+<p><code>缺点：</code></p>
+<p>需要额外html标记</p>
+<blockquote>
+<p>6.垂直居中: 利用Flexbox实现垂直居中</p>
+</blockquote>
+<p>这是CSS布局未来的趋势。Flexbox是css3新增属性，设计初衷是为了解决像垂直居中这样的常见布局问题.<br>记住Flexbox不只是用于居中，也可以分栏或者解决一些令人抓狂的布局问题。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/*父元素*/</span></div><div class="line"><span class="selector-class">.container</span>&#123;</div><div class="line">      <span class="attribute">width</span>: <span class="number">300px</span>;</div><div class="line">      <span class="attribute">height</span>: <span class="number">200px</span>;</div><div class="line">      <span class="attribute">border</span>: <span class="number">3px</span> solid <span class="number">#546461</span>;</div><div class="line">      <span class="attribute">display</span>: flex;<span class="comment">/*1*/</span></div><div class="line">      <span class="attribute">display</span>: -webkit-flex;</div><div class="line">      <span class="attribute">align-items</span>: center;<span class="comment">/*2*/</span></div><div class="line">      <span class="attribute">-webkit-align-items</span>: center;</div><div class="line">      <span class="attribute">justify-content</span>: center;<span class="comment">/*3*/</span></div><div class="line">      <span class="attribute">-webkit-justify-content</span>: center;</div><div class="line"> &#125;</div><div class="line"> <span class="comment">/*子元素*/</span></div><div class="line"> <span class="selector-class">.inner</span>&#123;</div><div class="line">      <span class="attribute">border</span>: <span class="number">3px</span> solid <span class="number">#458761</span>;</div><div class="line">      <span class="attribute">padding</span>: <span class="number">20px</span>;</div><div class="line"> &#125;</div></pre></td></tr></table></figure>
+<p><code>优点：</code></p>
+<ol>
+<li>内容块的宽高任意，优雅的溢出。</li>
+<li>可用于更复杂高级的布局技术中。</li>
+</ol>
+<p><code>缺点：</code></p>
+<ol>
+<li>IE8/IE9不支持。</li>
+<li>Body需要特定的容器和CSS样式。</li>
+<li>运行于现代浏览器上的代码需要浏览器厂商前缀。</li>
+<li>表现上可能会有一些问题。</li>
+</ol>
+<blockquote>
+<p>7.绝对居中( Absolute Centering ) <font color="red"><strong>强烈推荐</strong></font></p>
+</blockquote>
+<p>我们经常用margin:0 auto来实现水平居中，而一直认为margin:auto不能实现垂直居中……实际上，实现垂直居中仅需要声明元素高度和下面的CSS:<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.Absolute-Center</span> &#123;  </div><div class="line">  <span class="attribute">margin</span>: auto;  </div><div class="line">  <span class="attribute">position</span>: absolute;  </div><div class="line">  <span class="attribute">top</span>: <span class="number">0</span>; <span class="attribute">left</span>: <span class="number">0</span>; <span class="attribute">bottom</span>: <span class="number">0</span>; <span class="attribute">right</span>: <span class="number">0</span>;  </div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p><strong><code>居中方式:</code></strong></p>
+<!--一. 容器内( Within Container )-->
+<p>内容块的父容器设置为position:relative，使用上述绝对居中方式，可以使内容居中显示于父容器。<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.Center-Container</span> &#123;  </div><div class="line">  <span class="attribute">position</span>: relative;  </div><div class="line">&#125;  </div><div class="line">  </div><div class="line"><span class="selector-class">.Absolute-Center</span> &#123;  </div><div class="line">  <span class="attribute">width</span>: <span class="number">50%</span>;  </div><div class="line">  <span class="attribute">height</span>: <span class="number">50%</span>;  </div><div class="line">  <span class="attribute">overflow</span>: auto;  </div><div class="line">  <span class="attribute">margin</span>: auto;  </div><div class="line">  <span class="attribute">position</span>: absolute;  </div><div class="line">  <span class="attribute">top</span>: <span class="number">0</span>; <span class="attribute">left</span>: <span class="number">0</span>; <span class="attribute">bottom</span>: <span class="number">0</span>; <span class="attribute">right</span>: <span class="number">0</span>;  </div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<!--![容器container内的居中]( http://img.blog.csdn.net/20130911210011046?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvZnJlc2hsb3Zlcg==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast   "容器container内的居中")-->
+<!--以下其余的demo默认上面的CSS样式已引用包括进去，在此基础上只提供额外的类供用户追加以实现不同的功能。
+
+二. 视区内（Within Viewport）
+
+想让内容块一直停留在可视区域内？将内容块设置为position:fixed;并设置一个较大的z-index层叠属性值。
+
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.Absolute-Center</span><span class="selector-class">.is-Fixed</span> &#123;  </div><div class="line">  <span class="attribute">position</span>: fixed;  </div><div class="line">  <span class="attribute">z-index</span>: <span class="number">999</span>;  </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><img src="http://img.blog.csdn.net/20130911210041875?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvZnJlc2hsb3Zlcg==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="&quot;视区内的绝对居中&quot;" title="视区内的绝对居中"></p>
+<p>注意：对MobileSafari，若内容块不是放在设置为position:relative;的父容器中，内容块将垂直居中于整个文档，而不是可视区域内垂直居中。</p>
+<p>三. 边栏( Offsets )</p>
+<p>如果你要设置一个固顶的头或增加其他的边栏，只需要在内容块的样式中加入像这样的CSS样式代码：top:70px;bottom:auto;由于已经声明了margin:auto;，该内容块将会垂直居中于你通过top,left,bottom和right属性定义的边界框内。</p>
+<p>你可以将内容块固定与屏幕的左侧或右侧，并且保持内容块垂直居中。使用right:0;left:auto;固定于屏幕右侧，使用left:0;right:auto;固定与屏幕左侧。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.Absolute-Center</span><span class="selector-class">.is-Right</span> &#123;  </div><div class="line">  <span class="attribute">left</span>: auto; <span class="attribute">right</span>: <span class="number">20px</span>;  </div><div class="line">  <span class="attribute">text-align</span>: right;  </div><div class="line">&#125;  </div><div class="line">  </div><div class="line"><span class="selector-class">.Absolute-Center</span><span class="selector-class">.is-Left</span> &#123;  </div><div class="line">  <span class="attribute">right</span>: auto; <span class="attribute">left</span>: <span class="number">20px</span>;  </div><div class="line">  <span class="attribute">text-align</span>: left;  </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><img src="http://img.blog.csdn.net/20130911210114921?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvZnJlc2hsb3Zlcg==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="&quot;视区内的绝对居中&quot;" title="视区内的绝对居中"></p>
+<p>四. 响应式/自适应(Responsive)</p>
+<p>绝对居中最大的优势应该就是对百分比形式的宽高支持的非常完美。甚至min-width/max-width 和min-height/max-height这些属性在自适应盒子内的表现也和预期很一致。</p>
+<p><img src="http://img.blog.csdn.net/20130911210138375?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvZnJlc2hsb3Zlcg==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="&quot;响应式绝对居中&quot;" title="响应式绝对居中"></p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.Absolute-Center</span><span class="selector-class">.is-Responsive</span> &#123;  </div><div class="line">  <span class="attribute">width</span>: <span class="number">60%</span>;   </div><div class="line">  <span class="attribute">height</span>: <span class="number">60%</span>;  </div><div class="line">  <span class="attribute">min-width</span>: <span class="number">200px</span>;  </div><div class="line">  <span class="attribute">max-width</span>: <span class="number">400px</span>;  </div><div class="line">  <span class="attribute">padding</span>: <span class="number">40px</span>;  </div><div class="line">&#125;  </div><div class="line">给内容块元素加上<span class="selector-tag">padding</span>也不影响内容块元素的绝对居中实现。</div></pre></td></tr></table></figure>
+<p>五. 溢出情况( Overflow )</p>
+<p>内容高度大于块元素或容器（视区viewport或设为position:relative的父容器）会溢出，这时内容可能会显示到块与容器的外面，或者被截断出现显示不全（分别对应内容块overflow属性设置为visible和hidden的表现）。</p>
+<p>加上overflow: auto会在内容高度超过容器高度的情况下给内容块显示滚动条而不越界。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.Absolute-Center</span><span class="selector-class">.is-Overflow</span> &#123;  </div><div class="line">  <span class="attribute">overflow</span>: auto;  </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><img src="http://img.blog.csdn.net/20130911210156921?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvZnJlc2hsb3Zlcg==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="&quot;溢出居中&quot;" title="溢出居中"></p>
+<p>六. 重绘(Resizing)</p>
+<p>你可以使用其他class类或JavaScript代码来重绘内容块同时保证居中，无须手动重新计算中心尺寸。当然，你也可以添加resize属性来让用户拖拽实现内容块的重绘。</p>
+<p>绝对居中（Absolute Centering）可以保证内容块始终居中，无论内容块是否重绘。可以通过设置min-/max-来根据自己需要限制内容块的大小，并防止内容溢出窗口/容器。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.Absolute-Center</span><span class="selector-class">.is-Resizable</span> &#123;  </div><div class="line">  <span class="attribute">min-width</span>: <span class="number">20%</span>;  </div><div class="line">  <span class="attribute">max-width</span>: <span class="number">80%</span>;  </div><div class="line">  <span class="attribute">min-height</span>: <span class="number">20%</span>;  </div><div class="line">  <span class="attribute">max-height</span>: <span class="number">80%</span>;  </div><div class="line">  <span class="attribute">resize</span>: both;  </div><div class="line">  <span class="attribute">overflow</span>: auto;  </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><img src="http://img.blog.csdn.net/20130911210208406?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvZnJlc2hsb3Zlcg==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="&quot;溢出居中&quot;" title="溢出居中">–&gt;</p>
+-->
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/垂直居中/" rel="tag"># 垂直居中</a>
+          
+            <a href="/tags/css/" rel="tag"># css</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/02/12/some-every/" rel="next" title="js some,foreach,map,filter,every对比">
+                <i class="fa fa-chevron-left"></i> js some,foreach,map,filter,every对比
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/03/05/filter/" rel="prev" title="ES6数组新特性 filter 方法">
+                ES6数组新特性 filter 方法 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="DLS" />
+          <p class="site-author-name" itemprop="name">DLS</p>
+           
+              <p class="site-description motion-element" itemprop="description">一个有思想的程序员</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">29</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-name">分类</span>
+              
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              
+                <span class="site-state-item-count">48</span>
+                <span class="site-state-item-name">标签</span>
+              
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#水平居中"><span class="nav-number">1.</span> <span class="nav-text">水平居中</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#垂直居中"><span class="nav-number">2.</span> <span class="nav-text">垂直居中</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2015 - 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">DLS</span>
+</div>
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+  
+  <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+
+  
+  <script type="text/javascript" src="/lib/three/three.min.js"></script>
+
+  
+  <script type="text/javascript" src="/lib/three/three-waves.min.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.2"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
